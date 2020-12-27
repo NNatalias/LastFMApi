@@ -1,0 +1,23 @@
+.menu{
+  font-size: 14px;
+  display: flex;
+  justify-content: start;
+  background: black;
+}
+.subMenu{
+  padding: 1Rem;
+}
+a:hover{
+  color: #8c8888;
+}
+.active {
+  color: #ff4081;
+}
+@media (max-width: 350px) {
+  .menu{
+    font-size: 10px;
+  }
+  .subMenu{
+    padding: 4%;
+  }
+}

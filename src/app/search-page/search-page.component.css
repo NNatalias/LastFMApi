@@ -1,0 +1,50 @@
+.wrap{
+  font-size: larger;
+}
+.searchForm{
+  padding:  1rem 0 1rem 0;
+  text-align: center;
+  width: 100%;
+  color: #1F1F1F;
+  background-color: #f8f7f7;
+}
+.searchStr{
+  width: 70%;
+}
+::ng-deep.mat-form-field-underline {
+  background: linear-gradient(45deg, #ff4081 10%, #f2c17e 33%, #11e2f6) !important;
+}
+::ng-deep.mat-form-field-ripple {
+  background: linear-gradient(45deg, #ff4081 10%, #f2c17e 33%, #11e2f6) !important;
+}
+.songsCard{
+  color: #f8f7f7;
+  margin: 1rem;
+}
+.songName{
+  font-size: large;
+  font-weight: bold;
+}
+.artistName{
+  color: #8c8888;
+  font-size: medium;
+}
+.titleError{
+  padding:  1rem 0 1rem 0;
+  text-align: center;
+  font-size: larger;
+  color: #434242;
+}
+.errorTitle{
+  text-align: center;
+  font-size: 30px;
+  color: brown;
+}
+@media (max-width: 400px) {
+  .wrap{
+    font-size: large;
+  }
+  .searchStr{
+    width: 80%;
+  }
+}

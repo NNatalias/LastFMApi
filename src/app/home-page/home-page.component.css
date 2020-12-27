@@ -1,0 +1,54 @@
+::-webkit-scrollbar{
+  background-color: black;
+  width: 30px;
+  height: 30px;
+}
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  background: linear-gradient(45deg, #ff4081 10%, #f2c17e 33%, #11e2f6);
+  border-radius: 30px;
+}
+.title{
+  font-size: 36px;
+  font-weight: bold;
+  padding: 1rem;
+  background: linear-gradient(45deg, #ff4081 10%, #f2c17e 33%, #11e2f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 30px;
+}
+.songs{
+  display: flex;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.songs:hover{
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -moz-overflow-scrolling: touch;
+  -ms-overflow-scrolling: touch;
+  -o-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+.songsCard{
+  margin: 1rem;
+}
+.songName{
+  font-size: larger;
+  font-weight: bold;
+}
+.artistName{
+  font-weight: lighter;
+}
+.artistName a{
+color: #8c8888;
+}
+.artistName a:hover{
+  text-decoration: underline;
+}
+.errorTitle{
+  text-align: center;
+  font-size: 30px;
+  color: brown;
+}

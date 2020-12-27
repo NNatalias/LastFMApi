@@ -1,0 +1,15 @@
+<div class="title">Популярные музыкальные дорожки</div>
+<div class="errorTitle" *ngIf="songService.error$ | async as error">
+  Ой ! У нас что-то случилось ( <br>
+  Ошибка: {{error}}
+</div>
+<div class="songs" *ngIf="this.songs.length;else loading">
+<div class="songsCard" *ngFor="let song of songs">
+  <img [src]="song.image[2]['#text']" alt="Photo of song"><br>
+  <div class="songName">{{song.name}}</div>
+  <div class="artistName"><a [href]="song.artist.url">{{song.artist.name}}</a></div>
+</div>
+</div>
+<ng-template #loading>
+  <mat-spinner  color = "accent"></mat-spinner>
+</ng-template>

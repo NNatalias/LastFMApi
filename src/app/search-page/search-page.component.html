@@ -1,0 +1,27 @@
+<div class="wrap">
+  <form class="searchForm" [formGroup]="searchForm" (ngSubmit)="searchSong()">
+<mat-form-field class="searchStr"  appearance="standard">
+  <mat-label>Поиск композиции</mat-label>
+  <input matInput type="text" formControlName="searchStr" placeholder="Название..." required>
+  <mat-error>Ждем от Вас название песни (</mat-error>
+  <button matSuffix class="btn1" *ngIf="searchForm.controls['searchStr'].value" mat-button mat-icon-button color="accent" (click)="searchForm.reset()" type="reset">
+    <mat-icon>close</mat-icon></button>
+</mat-form-field>
+  <button class="btn2" mat-fab color="accent" [disabled]="searchForm.invalid" type="submit">
+    <mat-icon>search</mat-icon></button>
+</form>
+  <div class="errorTitle" *ngIf="songService.error$ | async as error">
+    Ой ! У нас что-то случилось ( <br>
+    Ошибка: {{error}}
+  </div>
+  <div *ngIf="this.songs.length;else empty">
+  <div class="songsCard" *ngFor="let song of songs">
+    <div class="songName">{{song.name}}</div>
+    <div class="artistName">{{song.artist}}</div>
+  <hr size="1" noshade color="#8c8888">
+</div>
+</div>
+</div>
+<ng-template #empty>
+  <div class="titleError">Пока ничего нет</div>
+</ng-template>
