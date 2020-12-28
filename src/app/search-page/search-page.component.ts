@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SongsService} from '../songs.service';
 import {Song} from '../interfaces/song.interface';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {delay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-page',
@@ -16,6 +17,7 @@ export class SearchPageComponent implements OnInit {
 
   searchSong(): any {
     this.value = true;
+    delay(6000);
     this.songService.searchSong(this.searchForm.value.searchStr).subscribe((res: any) => {
       this.songs = res.results.trackmatches.track;
       this.value = false;
