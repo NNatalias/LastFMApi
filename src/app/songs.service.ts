@@ -15,7 +15,7 @@ export class SongsService {
       );
   }
   searchSong(songName: string): any {
-    return this.http.get(`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${songName}&api_key=apiKey&format=json`)
+    return this.http.get(`https://ws.audioscrobbler.com/2.0/?method=track.search&track=${songName}&api_key=apiKey&format=json`)
       .pipe(
         catchError(this.handleError.bind(this))
       );

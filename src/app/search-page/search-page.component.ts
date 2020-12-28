@@ -9,14 +9,16 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
+  value = false;
   songs: Song[] = [];
   searchForm: FormGroup;
   constructor(public songService: SongsService) { }
 
   searchSong(): any {
+    this.value = true;
     this.songService.searchSong(this.searchForm.value.searchStr).subscribe((res: any) => {
-      console.log(res);
       this.songs = res.results.trackmatches.track;
+      this.value = false;
     }); }
 
   ngOnInit(): void {

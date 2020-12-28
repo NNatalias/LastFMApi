@@ -10,6 +10,10 @@
   <button class="btn2" mat-fab color="accent" [disabled]="searchForm.invalid" type="submit">
     <mat-icon>search</mat-icon></button>
 </form>
+  <div *ngIf="this.value">
+    <mat-progress-spinner color="accent" mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
   <div class="errorTitle" *ngIf="songService.error$ | async as error">
     Ой ! <br>
     {{error}}
