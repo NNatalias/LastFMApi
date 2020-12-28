@@ -1,7 +1,7 @@
 <div class="title">Популярные музыкальные дорожки</div>
-<div class="errorTitle" *ngIf="songService.error$ | async as error">
-  Ой ! У нас что-то случилось ( <br>
-  Ошибка: {{error}}
+<div class="errorTitle" *ngIf="(songService.error$ | async) as error">
+  Ой ! <br>
+  {{error}}
 </div>
 <div class="songs" *ngIf="this.songs.length;else loading">
 <div class="songsCard" *ngFor="let song of songs">
@@ -11,7 +11,7 @@
 </div>
 </div>
 <ng-template #loading>
-  <mat-spinner  color = "accent"></mat-spinner>
+  <mat-spinner color = "accent"></mat-spinner>
 </ng-template>
 
 

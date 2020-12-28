@@ -8,13 +8,11 @@ export class SongsService {
   constructor(private http: HttpClient) {
   }
   public error$: Subject<string> = new Subject<string>();
-  public errorReg$: Subject<string> = new Subject<string>();
-  public errorDel$: Subject<string> = new Subject<string>();
   getTop(): any {
-   return this.http.get(`https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=apiKey&format=json`)
-     .pipe(
-       catchError(this.handleError.bind(this))
-     );
+    return this.http.get(`https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=apiKey&format=json`)
+      .pipe(
+        catchError(this.handleError.bind(this))
+      );
   }
   searchSong(songName: string): any {
     return this.http.get(`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${songName}&api_key=apiKey&format=json`)
@@ -23,49 +21,48 @@ export class SongsService {
       );
   }
   private handleError(error: HttpErrorResponse): Observable<any> {
-    const {message} = error.error.error;
-    switch (message) {
+    switch (error.error.error.toString()) {
       case '2':
-        this.error$.next(' Invalid service - This service does not exist');
+        this.error$.next('Недействительный сервис - такой сервис не существует');
         break;
       case '3':
-        this.error$.next(' Invalid Method - No method with that name in this package');
+        this.error$.next('Недействительный метод - в этом пакете нет метода с таким именем');
         break;
       case '4':
-        this.errorReg$.next('Authentication Failed - You do not have permissions to access the service');
+        this.error$.next('Ошибка аутентификации - у вас нет разрешения на доступ к службе.');
         break;
       case '5':
-        this.errorReg$.next('Invalid format - This service doesnt exist in that format');
+        this.error$.next('Неверный формат - эта служба не существует в этом формате.');
         break;
       case '6':
-        this.errorDel$.next(' Invalid parameters - Your request is missing a required parameter');
+        this.error$.next('Недопустимые параметры - в вашем запросе отсутствует обязательный параметр.');
         break;
       case '7':
-        this.errorDel$.next(' Invalid resource specified');
+        this.error$.next('Указан недопустимый ресурс');
         break;
       case '8':
-        this.error$.next('Operation failed - Something else went wrong');
+        this.error$.next('Операция не удалась - что-то пошло не так');
         break;
       case '9':
-        this.error$.next('Invalid session key - Please re-authenticate');
+        this.error$.next('Недействительный ключ сеанса - пожалуйста, повторите аутентификацию');
         break;
       case '10':
-        this.errorReg$.next('Invalid API key - You must be granted a valid key by last.fm');
+        this.error$.next('Недействительный ключ API. Last.fm должен предоставить вам действительный ключ.');
         break;
       case '11':
-        this.errorReg$.next('Service Offline - This service is temporarily offline. Try again later');
+        this.error$.next('Служба отключена - эта служба временно отключена. Попробуйте позже');
         break;
       case '13':
-        this.errorDel$.next('Invalid method signature supplied');
+        this.error$.next('Предоставлена неверная подпись метода');
         break;
       case '16':
-        this.errorDel$.next('There was a temporary error processing your request. Please try again');
+        this.error$.next('При обработке вашего запроса произошла временная ошибка. Пожалуйста, попробуйте еще раз');
         break;
       case '26':
-        this.errorReg$.next('Suspended API key - Access for your account has been suspended, please contact Last.fm');
+        this.error$.next('Приостановленный ключ API - доступ к вашей учетной записи приостановлен, обратитесь в Last.fm');
         break;
       case '29':
-        this.errorDel$.next('Rate limit exceeded - Your IP has made too many requests in a short period');
+        this.error$.next('Превышен лимит скорости - ваш IP-адрес сделал слишком много запросов за короткий период.');
         break;
     }
     return throwError(error);

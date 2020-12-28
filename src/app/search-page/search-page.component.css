@@ -38,7 +38,8 @@
 .errorTitle{
   text-align: center;
   font-size: 30px;
-  color: brown;
+  color: #434242;
+  line-height: 30px;
 }
 @media (max-width: 400px) {
   .wrap{

@@ -11,8 +11,8 @@
     <mat-icon>search</mat-icon></button>
 </form>
   <div class="errorTitle" *ngIf="songService.error$ | async as error">
-    Ой ! У нас что-то случилось ( <br>
-    Ошибка: {{error}}
+    Ой ! <br>
+    {{error}}
   </div>
   <div *ngIf="this.songs.length;else empty">
   <div class="songsCard" *ngFor="let song of songs">

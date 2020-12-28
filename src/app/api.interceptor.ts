@@ -13,7 +13,7 @@ export class ApiInterceptor implements HttpInterceptor{
       retry(1),
       catchError((error: HttpErrorResponse) => {
         if (error) {
-          console.log('inInterceptor:', error);
+          console.log('inInterceptor:', error.message);
         }
         return throwError(error);
       })

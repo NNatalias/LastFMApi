@@ -50,5 +50,6 @@ color: #8c8888;
 .errorTitle{
   text-align: center;
   font-size: 30px;
-  color: brown;
+  color: #434242;
+  line-height: 30px;
 }
